@@ -5,8 +5,8 @@ use Symfony\Component\Routing\Route;
 
 $collection = new RouteCollection();
 
-$collection->add('blog_homepage', new Route('/hello/{name}', array(
-    '_controller' => 'BlogBundle:Default:index',
+$collection->add('start_page', new Route('/welcome', array(
+    '_controller' => 'BlogBundle:Start:index',
 )));
 
 return $collection;
