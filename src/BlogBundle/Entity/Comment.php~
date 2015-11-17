@@ -130,28 +130,5 @@ class Comment
      * @ORM\JoinColumn(name="target_post", referencedColumnName="id" )
      */
     protected $inPost;
-
-    /**
-     * Set inPost
-     *
-     * @param \BlogBundle\Entity\Post $inPost
-     *
-     * @return Comment
-     */
-    public function setInPost(\BlogBundle\Entity\Post $inPost = null)
-    {
-        $this->inPost = $inPost;
-
-        return $this;
-    }
-
-    /**
-     * Get inPost
-     *
-     * @return \BlogBundle\Entity\Post
-     */
-    public function getInPost()
-    {
-        return $this->inPost;
-    }
 }
+
