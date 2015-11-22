@@ -2,7 +2,21 @@
 
 {% block body %}
     <body background="{{ asset('res/Background.jpg') }}" style="background-attachment: fixed ">
-    <<h1 align="center" style="font-family:'Indie Flower', cursive; font-size: 300%">Welcome everybody!</h1>
-
+    <<h1 align="center" style="font-family:'Indie Flower', cursive; font-size: 300% ">Welcome everybody!</h1>
+    <div style="width: 50%; background-color:rgba(132, 112, 255, 0.6); padding: 12px; border-radius: 20px; font-family:'Indie Flower';
+     position: absolute; left: 25%">
+        {% for post in allpost %}
+            <h1><p align="center">{{ post.postName|default(' ') }}</p></h1>
+            <p> </p>
+            <p> </p>
+            <p style="font-family: 'Lobster', cursive; font-size: 130%; color: #333333">{{ post.postText[:300]|default(' ')|nl2br }}...</p>
+            <p> </p>
+            <p><i>{{ post.postDate|date('Y-m-d')|default(' ')}}</i></p>
+            <p>  </p>
+            <a href="" class="button_allpost">Читать дальше</a>
+            <p> </p>
+            <hr>
+        {% endfor %}
+    </div>
     </body>
 {% endblock %}

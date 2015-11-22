@@ -13,4 +13,6 @@ $collection->add('admin_page', new Route('/admin', array(
     '_controller' => 'BlogBundle:Admin:admin',
 )));
 
+
+
 return $collection;
