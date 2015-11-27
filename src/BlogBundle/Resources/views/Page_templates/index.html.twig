@@ -13,7 +13,7 @@
             <p> </p>
             <p><i>{{ post.postDate|date('Y-m-d')|default(' ')}}</i></p>
             <p>  </p>
-            <a href="" class="button_allpost">Читать дальше</a>
+            <a href="{{ path('read_post', {'post': post.id|default('1')}) }}" class="button_allpost">Читать дальше</a>
             <p> </p>
             <hr>
         {% endfor %}

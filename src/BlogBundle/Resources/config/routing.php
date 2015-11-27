@@ -13,6 +13,8 @@ $collection->add('admin_page', new Route('/admin', array(
     '_controller' => 'BlogBundle:Admin:admin',
 )));
 
-
+$collection->add('read_post', new Route('/read_post/{post}', array(
+    '_controller' => 'BlogBundle:Read:read',
+)));
 
 return $collection;
