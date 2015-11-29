@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Admin Page</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+    </head>
+<body background="{{ asset('res/Background.jpg') }}" style="background-attachment: fixed ">
+<h1 align="center" style="font-family:'Indie Flower', cursive; font-size: 300%">Login Page</h1>
+<div style="width: 45%; background-color:rgba(132, 112, 255, 0.6); padding: 12px; border-radius: 20px; font-family:'Indie Flower'; font-size: 200%;
+     position: absolute; top: 17%; left: 25%">
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <form action="{{ path('login_check') }}" method="post">
+        <label for="username">Username:</label>
+        <p> </p>
+        <input type="text" id="username" name="_username" value="{{ last_username }}">
+        <p>  </p>
+        <label for="password">Password:</label>
+        <p> </p>
+        <input type="password" id="password" name="_password">
+        <p> </p>
+        <button type="submit">login</button>
+    </form>
+</div>
+<img src="{{ asset('res/Door.jpg') }}" border="0"; alt="Just login!" width="300" height="350" style="position: absolute; left: 48%; top: 20%;">
+</body>
+</html>

@@ -21,4 +21,12 @@ $collection->add('delete_commentary', new Route('/delete_comm/{comment}', array(
     '_controller' => 'BlogBundle:Delete:delete',
 )));
 
+$collection->add('login_route', new Route('/login', array(
+    '_controller' => 'BlogBundle:Security:login',
+)));
+
+$collection->add('login_check', new Route('/login_check'));
+
+$collection->add('logout', new Route('/logout'));
+
 return $collection;
