@@ -17,4 +17,8 @@ $collection->add('read_post', new Route('/read_post/{post}', array(
     '_controller' => 'BlogBundle:Read:read',
 )));
 
+$collection->add('delete_commentary', new Route('/delete_comm/{comment}', array(
+    '_controller' => 'BlogBundle:Delete:delete',
+)));
+
 return $collection;

@@ -14,6 +14,29 @@ class ReadController extends Controller
 
         $read_post = $this->getDoctrine()->getRepository('BlogBundle:Post')->find($post);
 
-        return $this->render('@Blog/Page_templates/read.html.twig', array('read_post' => $read_post));
+        $comment = new Comment();
+        $comment->setDateComment(new \DateTime('tomorrow'));
+        $comment->setInPost($post);
+
+        $form_comment = $this->createFormBuilder($comment)
+            ->add('authorComment', 'text', array('label' => 'Your Name'))
+            ->add('textComment', 'textarea', array('attr' => array('rows' => 20, 'cols' => 88)))
+            ->getForm();
+
+        $form_comment->handleRequest($request);
+
+        if($form_comment->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+           return $this->redirectToRoute('start_page');
+        }
+
+        $comments = $read_post->getComments();
+
+        return $this->render('@Blog/Page_templates/read.html.twig', array('read_post' => $read_post,
+            'form_for_comment' => $form_comment->createView(), 'comments' => $comments));
     }
 }

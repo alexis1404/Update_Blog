@@ -4,6 +4,7 @@ namespace BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BlogBundle\Entity\Post;
+use BlogBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
@@ -31,6 +32,8 @@ class AdminController extends Controller
             return $this->redirectToRoute('admin_page');
         }
 
-        return $this->render('@Blog/Page_templates/admin.html.twig', array('form_create_post' => $form_post->createView()));
+        $comments = $this->getDoctrine()->getRepository('BlogBundle:Comment')->findAll();
+
+        return $this->render('@Blog/Page_templates/admin.html.twig', array('form_create_post' => $form_post->createView(), 'all_comment' => $comments));
     }
 }
