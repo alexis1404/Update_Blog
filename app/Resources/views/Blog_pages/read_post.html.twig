@@ -6,6 +6,41 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('#form_comment').hide();
+
+                $('#comment_button').click(function(){
+                    $('#comment_button').fadeOut(3000);
+                    $('#form_comment').slideDown(3000);
+                    $('html, body').animate({scrollTop:$(document).height()}, 3000);
+                });
+
+                $('#upper_1').click(function(){
+                    $('html, body').animate({scrollTop:0}, 2000);
+                });
+            });
+        </script>
+        <style>
+            a.button7 {
+                font-weight: 700;
+                color: white;
+                text-decoration: none;
+                padding: .8em 1em calc(.8em + 3px);
+                border-radius: 3px;
+                background: rgb(199, 86, 167);
+                box-shadow: 0 -3px rgb(154, 62, 167) inset;
+                transition: 0.2s;
+            }
+            a.button7:hover { background: rgb(200, 125, 185); }
+            a.button7:active {
+                background: rgb(199, 86, 167);
+                box-shadow: 0 3px rgb(199, 86, 167) inset;
+            }
+
+        </style>
     </head>
     {% block body %}{% endblock %}
 </html>
