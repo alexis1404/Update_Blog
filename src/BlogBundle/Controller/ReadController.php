@@ -31,7 +31,7 @@ class ReadController extends Controller
             $em->persist($comment);
             $em->flush();
 
-           return $this->redirectToRoute('start_page');
+           return $this->redirect($this->generateUrl('read_post', array('post' => $post->getId())));
         }
 
         $comments = $read_post->getComments();
