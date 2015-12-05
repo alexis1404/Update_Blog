@@ -4,16 +4,14 @@ namespace BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BlogBundle\Entity\Comment;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class DeleteController extends Controller
 {
-    /**
-     * @Secure(roles="ROLE_ADMIN")
-     */
 
     public function deleteAction(Comment $comment)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($comment);
         $em->flush();
