@@ -29,4 +29,12 @@ $collection->add('login_check', new Route('/login_check'));
 
 $collection->add('logout', new Route('/logout'));
 
+$collection->add('access_denied', new Route('/access_denied', array(
+    '_controller' => 'BlogBundle:Denied:safe',
+)));
+
+$collection->add('user_registration', new Route('/register', array(
+    '_controller' => 'BlogBundle:Registration:register',
+)));
+
 return $collection;

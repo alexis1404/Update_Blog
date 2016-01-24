@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>REGISTRATION</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+        <style>
+            .but
+            {
+                background: #cd8dbf;
+                width: 150px;
+                height: 40px;
+                display: inline-block;
+            }
+            .but:hover
+            {
+                background: #ddc2d0 0 81px;
+            }
+            .but:active
+            {
+                background:purple 0 38px;
+            }
+        </style>
+    </head>
+<body background="{{ asset('res/Background.jpg') }}" style="background-attachment: fixed ">
+<h1 align="center" style="font-family:'Indie Flower', cursive; font-size: 300%">GO REGISTRATION! ;)</h1>
+<div align="center" style="width: 45%; background-color:rgba(132, 112, 255, 0.6); padding: 12px; border-radius: 20px; font-family:'Indie Flower'; font-size: 200%;
+     position: absolute; top: 17%; left: 25%">
+    {% block reg_form %}{% endblock %}
+</div>
+</body>
+</html>

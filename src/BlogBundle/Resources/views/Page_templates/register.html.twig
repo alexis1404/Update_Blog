@@ -1,0 +1,12 @@
+{% extends ':Blog_pages:registration_page.html.twig' %}
+
+{% block reg_form %}
+{{ form_start(form) }}
+    <p>{{ form_row(form.username) }}</p>
+    <p>{{ form_row(form.email) }}</p>
+    <p>{{ form_row(form.plainPassword.first) }}</p>
+    <p>{{ form_row(form.plainPassword.second) }}</p>
+    <p><button type="submit" class="but">Register!</button></p>
+    {{ form_end(form) }}
+{% endblock %}
+

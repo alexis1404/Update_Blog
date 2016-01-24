@@ -19,8 +19,8 @@ class ReadController extends Controller
         $comment->setInPost($post);
 
         $form_comment = $this->createFormBuilder($comment)
-            ->add('authorComment', 'text', array('label' => 'Your Name'))
-            ->add('textComment', 'textarea', array('attr' => array('rows' => 20, 'cols' => 88)))
+            ->add('authorComment', 'text', array('label' => 'Your Name',))
+            ->add('textComment', 'textarea', array('label' => 'Your comment', 'attr' => array('rows' => 20, 'cols' => 88,)))
             ->getForm();
 
         $form_comment->handleRequest($request);

@@ -5,7 +5,52 @@
         <title>Admin Page</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
-
+        <style>
+            a.button_reg, a.button_reg:before {
+                display: inline-block;
+                font-size: 20px;
+                color: #fff;
+                text-decoration: none;
+                padding: 8px 15px;
+                border-radius: 100px;
+                border: solid rgb(154, 62, 167);
+                border-width: 3px 10px;
+                outline: none;
+                opacity: 1;
+                transition: .6s, opacity 0s 9999999s, visibility 0s 9999999s;
+            }
+            a.button_reg {
+                position: relative;
+                padding: calc(8px + 3px - 1px) calc(15px + 10px - 1px);
+                border: 1px solid rgba(221, 194, 208, 0.5);
+                background: linear-gradient(to left, rgb(221, 138, 211) 1%, #fff 3%, rgb(200, 125, 185) 8%, rgba(255,255,255,.3) 50%, rgb(200, 125, 185) 92%, #fff 97%, rgb(62,153,239) 99%) no-repeat;
+            }
+            a.button_reg:before {
+                content:  "ЗАРЕГИСТРИРУЙСЯ!";
+                position:  absolute;
+                bottom: -7px;
+                left: -1px;
+                width: calc(100% - (15px + 10px - 1px)*2);
+                background: #fff linear-gradient(rgb(200, 125, 185), rgb(154, 62, 167) 60%, rgb(201, 0, 198));
+                box-shadow: 0 10px 18px rgba(0,0,0,.5);
+            }
+            a.button_reg:hover {
+                -webkit-transform: scale(1.1, 1.1);
+                transform: scale(1.1, 1.1);
+            }
+            a.button_reg:hover:before {
+                border-color: #9a3ea7;
+                background: #fff linear-gradient(#c87db9, #9a3ea7 60%, #c87db9);
+            }
+            a.button_reg:focus,
+            a.button_reg:active {
+                -webkit-transform: scale(2, 2);
+                transform: scale(2, 2);
+                opacity: 0;
+                visibility: hidden;
+                transition: .4s;
+            }
+        </style>
     </head>
 <body background="{{ asset('res/Background.jpg') }}" style="background-attachment: fixed ">
 <h1 align="center" style="font-family:'Indie Flower', cursive; font-size: 300%">Login Page</h1>
@@ -27,5 +72,9 @@
     </form>
 </div>
 <img src="{{ asset('res/Door.jpg') }}" border="0"; alt="Just login!" width="300" height="350" style="position: absolute; left: 48%; top: 20%;">
+<div style="position: absolute; top: 65%; left: 40%">
+    <a href="{{ path('user_registration') }}" class="button_reg" tabindex="0">кнопка-button-button</a>
+
+</div>
 </body>
 </html>
