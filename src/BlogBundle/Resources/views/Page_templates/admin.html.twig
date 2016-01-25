@@ -11,7 +11,8 @@
             {{ form_row(form_create_post.postName) }}
             <p>  </p>
             {{ form_row(form_create_post.postText) }}
-            <p>  </p>
+            <p>Select image for post!</p>
+            {{ form_row(form_create_post.file) }}
             {{ form_row(form_create_post.save) }}
             {{ form_rest(form_create_post) }}
         </form>
@@ -29,5 +30,6 @@
         {% endfor %}
     </div>
     <a href="{{ path('logout') }}"><img src="{{ asset('res/Exit.gif') }}" border="0"; alt="Exit"; width="130"; height="70" style="position: absolute; left: 90%; top: 5%"></a>
+
     </body>
 {% endblock %}

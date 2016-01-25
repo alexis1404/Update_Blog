@@ -18,14 +18,16 @@ class AdminController extends Controller
             ->add('postName', 'text', array('label' => 'Name post'))
             ->add('postText', 'textarea', array('attr' => array('rows' => 20, 'cols' => 88)))
             ->add('save', 'submit', array('label' => 'Создать новый пост'))
+            ->add('file')
             ->getForm();
 
         $form_post->handleRequest($request);
 
-        if($form_post->isValid())
+        if($form_post->isSubmitted() && $form_post->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-
+            $post->preUpload();
+            $post->upload();
             $em->persist($post);
             $em->flush();
 
