@@ -7,7 +7,7 @@
      position: absolute; left: 25%;">
          <h1 align="center">{{ read_post.postName|default(' ')|nl2br }}</h1>
          {% if read_post.absolutePath != 'load/image/NULL' %}
-         <img width="550" height="380" src="{{ asset(read_post.absolutePath) }}" style="position: relative; left: 15%">
+         <img width="550" height="380" src="{{ asset(read_post.absolutePath) }}" style="position: relative; left: 15%; border: 5px double; border-color: #565656; padding: 5px">
          {% endif %}
          <p>{{ read_post.postText|default('  ')|nl2br }}</p>
          <p>  </p>
