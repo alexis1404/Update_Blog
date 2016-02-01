@@ -8,6 +8,9 @@
         {% for post in allpost %}
             <h1><p align="center">{{ post.postName|default(' ') }}</p></h1>
             <p> </p>
+            {% if post.absolutePath != 'load/image/NULL' %}
+                <img width="550" height="380" src="{{ asset(post.absolutePath) }}" style="position: relative; left: 15%; border: 5px double; border-color: #565656; padding: 5px">
+            {% endif %}
             <p> </p>
             <p style="font-family: 'Lobster', cursive; font-size: 130%; color: #333333">{{ post.postText[:300]|default(' ')|nl2br }}...</p>
             <p> </p>

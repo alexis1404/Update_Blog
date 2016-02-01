@@ -203,10 +203,10 @@ class Post
     }
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
 
-    public $path;
+    public $path = 'NULL';
 
     public function getAbsolutePath()
     {
