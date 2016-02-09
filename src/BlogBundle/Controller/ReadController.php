@@ -16,10 +16,13 @@ class ReadController extends Controller
 
         $comment = new Comment();
         $comment->setDateComment(new \DateTime('tomorrow'));
+        $actual_user_name = $this->get('security.token_storage')->getToken()->getUsername();
+        $comment->setAuthorComment($actual_user_name);
+        $user_implement = $this->getDoctrine()->getRepository('BlogBundle:User')->findOneBy(array('username' => $actual_user_name));
         $comment->setInPost($post);
+        $comment->setUser($user_implement);
 
         $form_comment = $this->createFormBuilder($comment)
-            ->add('authorComment', 'text', array('label' => 'Your Name',))
             ->add('textComment', 'textarea', array('label' => 'Your comment', 'attr' => array('rows' => 20, 'cols' => 88,)))
             ->getForm();
 
@@ -37,6 +40,7 @@ class ReadController extends Controller
         $comments = $read_post->getComments();
 
         return $this->render('@Blog/Page_templates/read.html.twig', array('read_post' => $read_post,
-            'form_for_comment' => $form_comment->createView(), 'comments' => $comments));
+            'form_for_comment' => $form_comment->createView(), 'comments' => $comments,
+            'username' => $actual_user_name));
     }
 }

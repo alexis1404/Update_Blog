@@ -270,4 +270,28 @@ class Post
         }
         $this->file = null;
     }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Post
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
 }

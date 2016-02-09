@@ -182,38 +182,5 @@ class User implements UserInterface, \Serializable
      */
     protected $user_comments;
 
-
-    /**
-     * Add userComment
-     *
-     * @param \BlogBundle\Entity\Comment $userComment
-     *
-     * @return User
-     */
-    public function addUserComment(\BlogBundle\Entity\Comment $userComment)
-    {
-        $this->user_comments[] = $userComment;
-
-        return $this;
-    }
-
-    /**
-     * Remove userComment
-     *
-     * @param \BlogBundle\Entity\Comment $userComment
-     */
-    public function removeUserComment(\BlogBundle\Entity\Comment $userComment)
-    {
-        $this->user_comments->removeElement($userComment);
-    }
-
-    /**
-     * Get userComments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUserComments()
-    {
-        return $this->user_comments;
-    }
 }
+

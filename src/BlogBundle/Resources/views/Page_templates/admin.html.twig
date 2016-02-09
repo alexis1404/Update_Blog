@@ -12,24 +12,38 @@
             <p>  </p>
             {{ form_row(form_create_post.postText) }}
             <p>Select image for post!</p>
-            {{ form_row(form_create_post.file) }}
+            {{ form_row(form_create_post.file, { 'attr': {'class': 'preview'} }) }}
             {{ form_row(form_create_post.save) }}
             {{ form_rest(form_create_post) }}
         </form>
+        <button id="showPreview">ПРЕДПРОСМОТР ЗАГРУЖАЕМОГО ИЗОБРАЖЕНИЯ</button>
+        <div style="border: double; position: absolute; top: 70%; left: 60%; width: 200px; height: 200px"><img src="{{ asset('res/GraySquare.png') }}" id="previewImg" width="200" height="200"/></div>
     </div>
     <a href="{{ path('start_page') }}"><img src="{{ asset('res/Main_page.png') }}" border="0"; alt="Go main page!"; width="100" height="100" style="position: absolute;
     left: 1%; top: 5%"></a>
-    <div style="width: 45%; background-color:rgba(132, 112, 255, 0.6); padding: 12px; border-radius: 20px; position: absolute; left: 52%; top: 17% ">
-        {% for comments in all_comment %}
-            <h2 align="center">{{ comments.authorComment|default(' ') }}</h2>
-            <p>{{ comments.textComment|default(' ')|nl2br }}</p>
-            <p>{{ comments.dateComment|date('Y-m-d')|default(' ') }}</p>
-            <p>  </p>
-            <p><a href="{{ path('delete_commentary', {'comment': comments.id }) }}" class="button_del">DELETE</a></p>
-            <hr>
-        {% endfor %}
-    </div>
-    <a href="{{ path('logout') }}"><img src="{{ asset('res/Exit.gif') }}" border="0"; alt="Exit"; width="130"; height="70" style="position: absolute; left: 90%; top: 5%"></a>
+        <div style="width: 45%; background-color:rgba(132, 112, 255, 0.6); padding: 12px; border-radius: 20px; position: relative; left: 52%; top: 22px">
+            <select id="user_list">
+                {% for user in all_users %}
+                    <option value="{{ user.username }}">{{ user.username }}</option>
+                {% endfor %}
+            </select>
+            <button id="user_choice">Получить все комментарии юзера</button>
+            <p> </p>
+            <div id="comment_list" style="border: double; width: 80%; padding: 10px">
 
+            </div>
+            <div style="width: 97%; background-color:rgba(132, 112, 255, 0.6); padding: 12px; border-radius: 20px; position: absolute; left: 0%; top: 110% ">
+                {% for comments in all_comment %}
+                    <h2 align="center">{{ comments.authorComment|default(' ') }}</h2>
+                    <p>{{ comments.textComment|default(' ')|nl2br }}</p>
+                    <p>{{ comments.dateComment|date('Y-m-d')|default(' ') }}</p>
+                    <p>  </p>
+                    <p><a href="{{ path('delete_commentary', {'comment': comments.id }) }}" class="button_del">DELETE</a></p>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    <a href="{{ path('logout') }}"><img src="{{ asset('res/Exit.gif') }}" border="0"; alt="Exit"; width="130"; height="70" style="position: absolute; left: 90%; top: 5%"></a>
     </body>
 {% endblock %}
+

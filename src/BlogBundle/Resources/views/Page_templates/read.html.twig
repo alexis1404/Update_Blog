@@ -25,7 +25,7 @@
     <form action="{{ path('read_post', {'post': read_post.id }) }}" method="post" {{ form_enctype(form_for_comment) }}>
         {{ form_errors(form_for_comment) }}
         <p>  </p>
-        <h4 align="center">{{ form_row(form_for_comment.authorComment) }}</h4>
+        <h4 align="center">{{ username }}</h4>
         {{ form_row(form_for_comment.textComment) }}
         <p>  </p>
         {{ form_rest(form_for_comment) }}

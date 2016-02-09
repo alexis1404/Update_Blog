@@ -37,4 +37,12 @@ $collection->add('user_registration', new Route('/register', array(
     '_controller' => 'BlogBundle:Registration:register',
 )));
 
+$collection->add('ajax_get_comment', new Route('/userget', array(
+    '_controller' => 'BlogBundle:AjaxGetUser:userget',
+)));
+
+$collection->add('ajax_delete_comment', new Route('/commdel', array(
+    '_controller' => 'BlogBundle:AjaxDelComm:delcom',
+)));
+
 return $collection;

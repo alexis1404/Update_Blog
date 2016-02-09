@@ -43,6 +43,98 @@
                 background: linear-gradient(rgba(200,200,200,.5), rgba(240,240,240,.5));
             }
         </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                $('#comment_list').hide();
+
+                $('#user_choice').click(function(){
+                    var user_name = $('#user_list').val();
+                    $.ajax({
+                        dataType: 'json',
+                        url: '{{ path('ajax_get_comment') }}',
+                        type: 'POST',
+                        data:{
+                            'user_name': user_name
+                        },
+                        success:function(data){
+                            $('#comment_list').hide();
+                            for (var i in data){
+                                $('#comment_list').append(
+                                        '<p align="center">' + data[i].author_comment +'</p>' +
+                                        '<p>'+ data[i].text_comment +'</p>' +
+                                        '<p>'+ data[i].date_comment +'</p>' +
+                                        '<p> </p>' +
+                                        '<button class="test" id=' + data[i].id + '>УДАЛИТЬ КОММЕНТАРИЙ</button>' +
+                                        '<p><hr></p>'
+                                );
+                            }
+                         $('#comment_list').slideDown(2000);
+                        }
+                    });
+                });
+
+                $('.test').live('click', function(){
+                   var question = confirm('Вы действительно хотите удалить этот комментарий?');
+                    if(question){
+                    var id_user = $(this).attr('id');
+                    $.ajax({
+                        dataType: 'json',
+                        url: '{{ path('ajax_delete_comment') }}',
+                        type: 'POST',
+                        data:{
+                            'id_comm': id_user
+                        },
+                        success:function(result){
+                            if(dats.code == 100 && dats.success){
+                                //dummy
+                            }
+                        }
+                    });
+
+                    var user_name = $('#user_list').val();
+                    $.ajax({
+                        dataType: 'json',
+                        url: '{{ path('ajax_get_comment') }}',
+                        type: 'POST',
+                        data:{
+                            'user_name': user_name
+                        },
+                        success:function(data_1){
+                            $('#comment_list').hide();
+                            $('#comment_list').empty();
+                            for (var i in data_1){
+                                $('#comment_list').append(
+                                        '<p align="center">' + data_1[i].author_comment +'</p>' +
+                                        '<p>'+ data_1[i].text_comment +'</p>' +
+                                        '<p>'+ data_1[i].date_comment +'</p>' +
+                                        '<p> </p>' +
+                                        '<button class="test" id=' + data_1[i].id + '>УДАЛИТЬ КОММЕНТАРИЙ</button>' +
+                                        '<p><hr></p>'
+                                );
+                            }
+                            $('#comment_list').slideDown(2000);
+                        }
+                    });
+
+                    }
+                });
+
+                $('#showPreview').click(function(){
+                    var reader = new FileReader();
+                    var image;
+
+                    reader.onload = function(e){
+                        var imageSrc = e.target.result;
+                        $('#previewImg').attr('src', imageSrc);
+                    }
+
+                    reader.readAsDataURL($('input[name="form[file]"]').get(0).files[0]);
+                });
+
+            });
+        </script>
     </head>
     {% block body %}
     {% block post_form %}{% endblock %}

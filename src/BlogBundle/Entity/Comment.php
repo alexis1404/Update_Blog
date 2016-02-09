@@ -3,12 +3,13 @@
 namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use JMS\Serializer\Annotation as JMS;
 /**
  * Comment
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="BlogBundle\Entity\CommentRepository")
+ *@JMS\ExclusionPolicy("all")
  */
 class Comment
 {
@@ -18,6 +19,9 @@ class Comment
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @JMS\Expose
+     *
      */
     private $id;
 
@@ -25,6 +29,8 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="authorComment", type="string", length=50)
+     *
+     * @JMS\Expose
      */
     private $authorComment;
 
@@ -32,6 +38,8 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="textComment", type="text")
+     *
+     * @JMS\Expose
      */
     private $textComment;
 
@@ -39,6 +47,8 @@ class Comment
      * @var \DateTime
      *
      * @ORM\Column(name="dateComment", type="date")
+     *
+     * @JMS\Expose
      */
     private $dateComment;
 
@@ -153,5 +163,35 @@ class Comment
     public function getInPost()
     {
         return $this->inPost;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BlogBundle\Entity\User", inversedBy="user_comments")
+     * @ORM\JoinColumn(name="target_user", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * Set user
+     *
+     * @param \BlogBundle\Entity\User $user
+     *
+     * @return Comment
+     */
+    public function setUser(\BlogBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \BlogBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

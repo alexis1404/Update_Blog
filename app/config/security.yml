@@ -40,3 +40,5 @@ security:
         - { path: ^/welcome, roles: [ROLE_USER, ROLE_ADMIN] }
         - { path: ^/read_post, roles: [ROLE_USER, ROLE_ADMIN] }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/userget, roles: ROLE_ADMIN }
+        - { path: ^/commdel, roles: ROLE_ADMIN }
